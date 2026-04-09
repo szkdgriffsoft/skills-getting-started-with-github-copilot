@@ -12,7 +12,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 1. Install the dependencies:
 
    ```
-   pip install fastapi uvicorn
+   pip install -r requirements.txt
    ```
 
 2. Run the application:
@@ -31,6 +31,7 @@ A super simple FastAPI application that allows students to view and sign up for 
 | ------ | ----------------------------------------------------------------- | ------------------------------------------------------------------- |
 | GET    | `/activities`                                                     | Get all activities with their details and current participant count |
 | POST   | `/activities/{activity_name}/signup?email=student@mergington.edu` | Sign up for an activity                                             |
+| DELETE | `/activities/{activity_name}/participants?email=student@mergington.edu` | Unregister a student from an activity                         |
 
 ## Data Model
 
@@ -48,3 +49,13 @@ The application uses a simple data model with meaningful identifiers:
    - Grade level
 
 All data is stored in memory, which means data will be reset when the server restarts.
+
+## Running Tests
+
+Run the backend test suite with pytest:
+
+```
+pytest tests
+```
+
+The backend API tests in the tests directory follow the Arrange-Act-Assert pattern and reset the in-memory activity data before each test.
